@@ -97,3 +97,15 @@ A canary release is more complex to manage than either blue-green or rolling upd
 - Linkerd: [Dynamic request routing](https://linkerd.io/features/routing/)
 - Istio: [Canary Deployments using Istio](https://istio.io/blog/canary-deployments-using-istio.html)
 
+## Conclusion
+
+In recent years, there has been a sea change in the industry, from creating *systems of record* to creating *systems of engagement*.
+
+Systems of record are traditional back-office data management applications. At the heart of these systems there often sits an RDBMS that is the single source of truth. The term "system of engagement" is credited to Geoffrey Moore, in his 2011 paper *Systems of Engagement and the Future of Enterprise IT*. Systems of engagement are applications focused on communication and collaboration. They connect people in real time. They must be available 24/7. New features are intoduced regularly without taking the application offline. Users expect more and are less patient of unexpected delays or downtime.
+
+In the consumer space, a better user experience can have measurable business value. Every additional minute that a user stays inside an application may translate directly into revenue. And in the realm of business systems, users' expectations have changed. If these systems aim to foster communication and collaboration, they must take their cue from consumer-facing applications.
+
+Microservices are a response to this changing landscape. By decomposing a monolithic application into a group of loosely coupled services, we can control the release cycle of each service, and enable frequent updates without downtime or breaking changes. There are also benefits of scalability, failure isolation, and resiliency. Cloud platforms are making it easier to build and run microservices, with automated provisioning of compute resources, container orchestrators as a service, and event-driven serverless environments.
+
+However, good design is a key factor to being successful with microservices. You must put careful thought into analyzing the domain, choosing technologies, modeling data, designing APIs, building a mature DevOps culture, and other considerations. We hope that this guide, and the accompanying reference implementation, helps illuminate the journey. 
+
