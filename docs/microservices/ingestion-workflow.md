@@ -103,17 +103,11 @@ Further load testing might have discovered the root cause and allowed us to reso
 
 There are three general classes of failure to consider.
 
-1. A downstream service has a transient failure, such as a network timeout. 
-
-2. A downstream service has a non-transient failure. Non-transient failures include normal error conditions, crashes, unhandled exceptions, and so forth. 
-
-3. The Scheduler service faults (for example, a node crashes). 
-
-In the case of a transient failure, the Scheduler service should simply retry the operation. If the operation still fails after a certain number of attempts, it's considered a non-transient failure.  
+1. A downstream service may have a non-transient failure, which is any failure that's unlikely to go away by itself. Non-transient failures include normal error conditions, such as invalid input to a method. They also include unhandled exceptions in application code or a process crashing. If this type of error occurs, the entire business transaction must be marked as a failure. It may be necessary to undo other steps in the same transaction that already succeeded. (See Compensating Transactions, below.)
  
-When a non-transient failure occurs, the entire business transaction must be marked as a failure. It may be necessary to undo other steps in the same transaction that already succeeded. (See Compensating Transactions, below.)
- 
-If the Scheduler service itself crashes, Kubernetes will bring up a new instance. However, any transactions that were already in progress must be resumed. 
+2. A downstream service may experiences a transient failure such as a network timeout. These errors can often be resolved simply by retrying the call. If the operation still fails after a certain number of attempts, it's considered a non-transient failure. 
+
+3. The Scheduler service itself might fault (for example, because a node crashes). In that case, Kubernetes will bring up a new instance of the service. However, any transactions that were already in progress must be resumed. 
 
 ## Compensating transactions
 

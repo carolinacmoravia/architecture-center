@@ -95,7 +95,7 @@ The purpose of an aggregate is to model transactional invariants. Things in the 
 Traditional applications have often used database transactions to enforce consistency. In a distributed application, however, that's often not feasible. A single business transaction may span multiple data stores, or may be long running, or may involve third-party services. Ultimately it's up to the application, not the data layer, to enforce the invariants required for the domain. 
 
 > [!NOTE]
-> An aggregate doesn't *need* to have child entities, and it's actually common for an aggregate to consist of a single entity. Even so, the distinction between aggregates and entities is important. An aggregate enforces transactional semantics, while an entity might not.
+> An aggregate doesn't *need* to have child entities, and it's actually common for an aggregate to consist of a single entity.
 
 **Domain and application services**. In DDD terminology, a service is an object that implements some logic without holding any state. Evans distinguishes between *domain services*, which encapsulate domain logic, and *application services*, which provide technical functionality, such as user authentication or sending an SMS message. Domain services are often used to model behavior that spans multiple entities. 
 
